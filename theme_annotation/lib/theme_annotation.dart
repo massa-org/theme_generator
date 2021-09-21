@@ -54,4 +54,3 @@ class ThemeDataCubit<T> extends Cubit<T> with BlocSubscriptionManager {
         );
       };
 }
-

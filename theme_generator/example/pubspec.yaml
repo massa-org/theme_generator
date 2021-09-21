@@ -12,9 +12,7 @@ dependencies:
     sdk: flutter
 
   
-  theme_annotation: 
-    path: 
-      ../../theme_annotation
+  theme_annotation: ^0.0.1
       
   json_annotation: ^4.0.0
 

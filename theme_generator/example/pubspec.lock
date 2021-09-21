@@ -460,9 +460,9 @@ packages:
   theme_annotation:
     dependency: "direct main"
     description:
-      path: "../../theme_annotation"
-      relative: true
-    source: path
+      name: theme_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.1"
   theme_generator:
     dependency: "direct dev"

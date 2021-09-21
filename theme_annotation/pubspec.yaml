@@ -1,7 +1,7 @@
 name: theme_annotation
-description: A new Flutter package project.
+description: Defines the annotations used by theme_generator to create code for theme serialization, deserialization and provider for it.
 version: 0.0.1
-homepage:
+homepage: https://github.com/massa-org/theme_generator
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

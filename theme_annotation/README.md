@@ -1,1 +1,1 @@
-Package to annotate theme for generation
+Defines the annotations used by theme_generator to create code for theme serialization, deserialization and provider for it.

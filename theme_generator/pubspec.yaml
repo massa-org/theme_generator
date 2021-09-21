@@ -1,19 +1,13 @@
 name: theme_generator
-description: A new Flutter package project.
+description: Package that help to generate theme that behaves like material themes, but with serialization and deserialization.
 version: 0.0.1
-homepage:
+homepage: https://github.com/massa-org/theme_generator
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
-
   
 dependencies:
-  flutter:
-    sdk: flutter
-  
-  theme_annotation:
-    path: ../theme_annotation
+  theme_annotation: ^0.0.1
 
   theme_json_converter: ^0.0.1
     
@@ -22,9 +16,6 @@ dependencies:
   analyzer: ^2.0.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   build_runner: ^2.0.0
   pedantic: ^1.11.1
   flutter_lints: ^1.0.0
