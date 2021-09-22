@@ -33,6 +33,7 @@ abstract class _$_ThemeDataBase {
 @NullableColorConverter()
 class _$_ThemeData extends _ThemeData {
   /* ALL final ${e.type} ${e.name}; */
+  @JsonKey(name: 'color')
   final Color? backgroundColor;
   final Color? addressBarColor;
   final Color? addressBarBackgroundColor;

@@ -7,8 +7,7 @@ part of 'theme.dart';
 // **************************************************************************
 
 _$_ThemeData _$$_ThemeDataFromJson(Map<String, dynamic> json) => _$_ThemeData(
-      const NullableColorConverter()
-          .fromJson(json['backgroundColor'] as String?),
+      const NullableColorConverter().fromJson(json['color'] as String?),
       const NullableColorConverter()
           .fromJson(json['addressBarColor'] as String?),
       addressBarBackgroundColor: const NullableColorConverter()
@@ -17,8 +16,7 @@ _$_ThemeData _$$_ThemeDataFromJson(Map<String, dynamic> json) => _$_ThemeData(
 
 Map<String, dynamic> _$$_ThemeDataToJson(_$_ThemeData instance) =>
     <String, dynamic>{
-      'backgroundColor':
-          const NullableColorConverter().toJson(instance.backgroundColor),
+      'color': const NullableColorConverter().toJson(instance.backgroundColor),
       'addressBarColor':
           const NullableColorConverter().toJson(instance.addressBarColor),
       'addressBarBackgroundColor': const NullableColorConverter()

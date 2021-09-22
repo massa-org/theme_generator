@@ -39,7 +39,7 @@ abstract class $baseName {
 ${all.map((e) => converters[e.type.toString()]).where((e) => e != null).toSet().join('\n')}
 class $dataHolderName extends $className {
   /* ALL final \${e.type} \${e.name}; */
-  ${all.map((e) => 'final ${e.type} ${e.name};').join('\n')}
+  ${all.map((e) => '${e.metadata.map((e) => e.toSource()).join(' ')} final ${e.type} ${e.name};').join('\n')}
 
 
   const $dataHolderName(

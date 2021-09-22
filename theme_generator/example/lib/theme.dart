@@ -10,7 +10,7 @@ abstract class _ThemeData extends _$_ThemeDataBase {
   const _ThemeData._();
 
   const factory _ThemeData(
-    Color? backgroundColor,
+    @JsonKey(name: 'color') Color? backgroundColor,
     Color? addressBarColor, {
     Color? addressBarBackgroundColor,
   }) = _$_ThemeData;
