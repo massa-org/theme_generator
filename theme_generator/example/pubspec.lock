@@ -470,7 +470,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   theme_json_converter:
     dependency: transitive
     description:
