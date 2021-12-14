@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, invalid_annotation_target
 import 'package:flutter/material.dart';
 import 'package:theme_annotation/theme_annotation.dart';
 
@@ -15,7 +15,7 @@ abstract class _ThemeData extends _$_ThemeDataBase {
     Color? addressBarBackgroundColor,
   }) = _$_ThemeData;
 
-  // must be define manual
+  // must be define  manual
   factory _ThemeData.from(ColorScheme colorScheme) => _ThemeData(
         colorScheme.surface,
         colorScheme.onSurface,

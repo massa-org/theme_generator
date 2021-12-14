@@ -23,7 +23,6 @@ abstract class $baseName {
   const $baseName();
   $dataHolderName combine($baseName? other) {
     if (other == null) return this as $dataHolderName;
-    if (other is!$baseName) throw 'Wtf is goning on';
     return $dataHolderName(
       /* POSITIONAL other.\${e.name} ?? \${e.name}, */
       ${positional.map((e) => 'other.${e.name} ?? ${e.name},').join('')}
@@ -59,8 +58,9 @@ class $dataHolderName extends $className {
 }
 
 class $providerName extends BlocProvider<ThemeDataCubit<$className>> {
-  $providerName.fromJson([Map<String, dynamic>? json])
+  $providerName.fromJson([Map<String, dynamic>? json,Key? key])
       : super(
+          key: key,
           create: ThemeDataCubit.getCreationFn(
             json == null ? null : $className.fromJson(json),
             (colorScheme) => $className.from(colorScheme),
@@ -72,7 +72,9 @@ class $providerName extends BlocProvider<ThemeDataCubit<$className>> {
     /*ALL \${e.type?} \${e.name},*/
     ${all.map((e) => '${e.type.nullabilitySuffix == NullabilitySuffix.none ? '${e.type}?' : e.type} ${e.name},').join('\n')}
     required Widget child,
+    Key? key,
   }) : super(
+          key: key,
           create: ThemeDataCubit.getCreationFn(
             $className(
               /*POSITIONAL \${e.name}*/
@@ -89,7 +91,7 @@ class $providerName extends BlocProvider<ThemeDataCubit<$className>> {
   // think how to rewrite this
   static void updateWithJson(BuildContext context, Map<String, dynamic> json) {
     final p = context.read<ThemeDataCubit<$className>>();
-    p.emit(p.state.combine($className.fromJson(json)));
+    p.set(p.state.combine($className.fromJson(json)));
   }
 
   static $className of(BuildContext context) => watch(context);

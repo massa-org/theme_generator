@@ -15,7 +15,6 @@ abstract class _$_ThemeDataBase {
   const _$_ThemeDataBase();
   _$_ThemeData combine(_$_ThemeDataBase? other) {
     if (other == null) return this as _$_ThemeData;
-    if (other is! _$_ThemeDataBase) throw 'Wtf is goning on';
     return _$_ThemeData(
       /* POSITIONAL other.${e.name} ?? ${e.name}, */
       other.backgroundColor ?? backgroundColor,
@@ -57,8 +56,9 @@ class _$_ThemeData extends _ThemeData {
 }
 
 class _Theme extends BlocProvider<ThemeDataCubit<_ThemeData>> {
-  _Theme.fromJson([Map<String, dynamic>? json])
+  _Theme.fromJson([Map<String, dynamic>? json, Key? key])
       : super(
+          key: key,
           create: ThemeDataCubit.getCreationFn(
             json == null ? null : _ThemeData.fromJson(json),
             (colorScheme) => _ThemeData.from(colorScheme),
@@ -72,7 +72,9 @@ class _Theme extends BlocProvider<ThemeDataCubit<_ThemeData>> {
     Color? addressBarColor,
     Color? addressBarBackgroundColor,
     required Widget child,
+    Key? key,
   }) : super(
+          key: key,
           create: ThemeDataCubit.getCreationFn(
             _ThemeData(
               /*POSITIONAL ${e.name}*/
@@ -89,7 +91,7 @@ class _Theme extends BlocProvider<ThemeDataCubit<_ThemeData>> {
   // think how to rewrite this
   static void updateWithJson(BuildContext context, Map<String, dynamic> json) {
     final p = context.read<ThemeDataCubit<_ThemeData>>();
-    p.emit(p.state.combine(_ThemeData.fromJson(json)));
+    p.set(p.state.combine(_ThemeData.fromJson(json)));
   }
 
   static _ThemeData of(BuildContext context) => watch(context);
@@ -115,7 +117,6 @@ abstract class _$_ThemeData2Base {
   const _$_ThemeData2Base();
   _$_ThemeData2 combine(_$_ThemeData2Base? other) {
     if (other == null) return this as _$_ThemeData2;
-    if (other is! _$_ThemeData2Base) throw 'Wtf is goning on';
     return _$_ThemeData2(
       /* POSITIONAL other.${e.name} ?? ${e.name}, */
       other.backgroundColor ?? backgroundColor,
@@ -164,8 +165,9 @@ class _$_ThemeData2 extends _ThemeData2 {
 }
 
 class Theme2 extends BlocProvider<ThemeDataCubit<_ThemeData2>> {
-  Theme2.fromJson([Map<String, dynamic>? json])
+  Theme2.fromJson([Map<String, dynamic>? json, Key? key])
       : super(
+          key: key,
           create: ThemeDataCubit.getCreationFn(
             json == null ? null : _ThemeData2.fromJson(json),
             (colorScheme) => _ThemeData2.from(colorScheme),
@@ -181,7 +183,9 @@ class Theme2 extends BlocProvider<ThemeDataCubit<_ThemeData2>> {
     TextDecoration? decor,
     TextStyle? style,
     required Widget child,
+    Key? key,
   }) : super(
+          key: key,
           create: ThemeDataCubit.getCreationFn(
             _ThemeData2(
               /*POSITIONAL ${e.name}*/
@@ -200,7 +204,7 @@ class Theme2 extends BlocProvider<ThemeDataCubit<_ThemeData2>> {
   // think how to rewrite this
   static void updateWithJson(BuildContext context, Map<String, dynamic> json) {
     final p = context.read<ThemeDataCubit<_ThemeData2>>();
-    p.emit(p.state.combine(_ThemeData2.fromJson(json)));
+    p.set(p.state.combine(_ThemeData2.fromJson(json)));
   }
 
   static _ThemeData2 of(BuildContext context) => watch(context);
