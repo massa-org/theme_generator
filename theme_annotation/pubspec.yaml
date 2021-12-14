@@ -1,6 +1,6 @@
 name: theme_annotation
 description: Defines the annotations used by theme_generator to create code for theme serialization, deserialization and provider for it.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/massa-org/theme_generator
 
 environment:

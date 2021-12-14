@@ -1,16 +1,15 @@
 // library theme_annotation;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:massa_utils/massa_utils.dart';
 
 export 'package:flutter_bloc/flutter_bloc.dart'
     show BlocProvider, ReadContext, WatchContext, SelectContext;
-
-export 'package:theme_json_converter/theme_json_converter.dart';
-export 'annotation.dart';
 export 'package:json_annotation/json_annotation.dart';
+export 'package:theme_json_converter/theme_json_converter.dart';
+
+export 'annotation.dart';
 
 class ThemeDataCubit<T> extends Cubit<T> with BlocSubscriptionManager {
   static ColorScheme? colorScheme;
@@ -53,4 +52,8 @@ class ThemeDataCubit<T> extends Cubit<T> with BlocSubscriptionManager {
           theme,
         );
       };
+
+  void set(T state) => super.emit(state);
+
+  void update(T Function(T v) update) => set(update(state));
 }
