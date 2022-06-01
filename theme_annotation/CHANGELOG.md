@@ -1,3 +1,7 @@
+## [0.2.0] - 2022-06-01
+
+- remove bloc usage
+
 ## [0.1.1] - 2021-12-14
 
 - fix emit usage

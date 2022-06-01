@@ -1,5 +1,5 @@
 import 'package:analyzer/dart/element/element.dart';
-import 'package:analyzer/dart/element/nullability_suffix.dart';
+
 import 'package:theme_generator/converters.dart';
 
 String enrichTemplate({
@@ -13,15 +13,15 @@ String enrichTemplate({
   final positional = required.followedBy(optional).toList();
   final String baseName = '_\$${className}Base';
   final String dataHolderName = '_\$$className';
-  final String providerName = accesorName ?? '_Theme';
+  // final String providerName = accesorName ?? '_Theme';
 
   return '''
-abstract class $baseName {
+abstract class $baseName implements ThemeBase<$dataHolderName> {
   /* ALL \${e.type} get \${e.name}; */
   ${all.map((e) => '${e.type} get ${e.name};').join('\n')}
 
   const $baseName();
-  $dataHolderName combine($baseName? other) {
+  $dataHolderName combine($dataHolderName? other) {
     if (other == null) return this as $dataHolderName;
     return $dataHolderName(
       /* POSITIONAL other.\${e.name} ?? \${e.name}, */
@@ -55,55 +55,6 @@ class $dataHolderName extends $className {
   ) : super._();
 
   Map<String, dynamic> toJson() => _\$\$${className}ToJson(this);
-}
-
-class $providerName extends BlocProvider<ThemeDataCubit<$className>> {
-  $providerName.fromJson([Map<String, dynamic>? json,Key? key])
-      : super(
-          key: key,
-          create: ThemeDataCubit.getCreationFn(
-            json == null ? null : $className.fromJson(json),
-            (colorScheme) => $className.from(colorScheme),
-          ),
-        );
-
-  // add ability to style components in place
-  $providerName({
-    /*ALL \${e.type?} \${e.name},*/
-    ${all.map((e) => '${e.type.nullabilitySuffix == NullabilitySuffix.none ? '${e.type}?' : e.type} ${e.name},').join('\n')}
-    required Widget child,
-    Key? key,
-  }) : super(
-          key: key,
-          create: ThemeDataCubit.getCreationFn(
-            $className(
-              /*POSITIONAL \${e.name}*/
-              ${positional.map((e) => '${e.name},').join('')}
-              /*NAMED \${e.name}: \${e.name},*/
-              ${named.map((e) => '${e.name}: ${e.name},').join('')}
-            ),
-            (colorScheme) => $className.from(colorScheme),
-          ),
-          child: child,
-        );
-
-        
-  // think how to rewrite this
-  static void updateWithJson(BuildContext context, Map<String, dynamic> json) {
-    final p = context.read<ThemeDataCubit<$className>>();
-    p.set(p.state.combine($className.fromJson(json)));
-  }
-
-  static $className of(BuildContext context) => watch(context);
-
-  static R select<R>(BuildContext context, R Function($className v) selector) =>
-      context
-          .select((ThemeDataCubit<$className> value) => selector(value.state));
-  static $className watch(BuildContext context) =>
-      context.watch<ThemeDataCubit<$className>>().state;
-
-  static $className read(BuildContext context) =>
-      context.read<ThemeDataCubit<$className>>().state;
 }
 ''';
 }

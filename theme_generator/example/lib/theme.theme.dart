@@ -6,14 +6,14 @@ part of 'theme.dart';
 // ThemeGenerator
 // **************************************************************************
 
-abstract class _$_ThemeDataBase {
+abstract class _$_ThemeDataBase implements ThemeBase<_$_ThemeData> {
   /* ALL ${e.type} get ${e.name}; */
   Color? get backgroundColor;
   Color? get addressBarColor;
   Color? get addressBarBackgroundColor;
 
   const _$_ThemeDataBase();
-  _$_ThemeData combine(_$_ThemeDataBase? other) {
+  _$_ThemeData combine(_$_ThemeData? other) {
     if (other == null) return this as _$_ThemeData;
     return _$_ThemeData(
       /* POSITIONAL other.${e.name} ?? ${e.name}, */
@@ -55,58 +55,7 @@ class _$_ThemeData extends _ThemeData {
   Map<String, dynamic> toJson() => _$$_ThemeDataToJson(this);
 }
 
-class _Theme extends BlocProvider<ThemeDataCubit<_ThemeData>> {
-  _Theme.fromJson([Map<String, dynamic>? json, Key? key])
-      : super(
-          key: key,
-          create: ThemeDataCubit.getCreationFn(
-            json == null ? null : _ThemeData.fromJson(json),
-            (colorScheme) => _ThemeData.from(colorScheme),
-          ),
-        );
-
-  // add ability to style components in place
-  _Theme({
-    /*ALL ${e.type?} ${e.name},*/
-    Color? backgroundColor,
-    Color? addressBarColor,
-    Color? addressBarBackgroundColor,
-    required Widget child,
-    Key? key,
-  }) : super(
-          key: key,
-          create: ThemeDataCubit.getCreationFn(
-            _ThemeData(
-              /*POSITIONAL ${e.name}*/
-              backgroundColor,
-              addressBarColor,
-              /*NAMED ${e.name}: ${e.name},*/
-              addressBarBackgroundColor: addressBarBackgroundColor,
-            ),
-            (colorScheme) => _ThemeData.from(colorScheme),
-          ),
-          child: child,
-        );
-
-  // think how to rewrite this
-  static void updateWithJson(BuildContext context, Map<String, dynamic> json) {
-    final p = context.read<ThemeDataCubit<_ThemeData>>();
-    p.set(p.state.combine(_ThemeData.fromJson(json)));
-  }
-
-  static _ThemeData of(BuildContext context) => watch(context);
-
-  static R select<R>(BuildContext context, R Function(_ThemeData v) selector) =>
-      context
-          .select((ThemeDataCubit<_ThemeData> value) => selector(value.state));
-  static _ThemeData watch(BuildContext context) =>
-      context.watch<ThemeDataCubit<_ThemeData>>().state;
-
-  static _ThemeData read(BuildContext context) =>
-      context.read<ThemeDataCubit<_ThemeData>>().state;
-}
-
-abstract class _$_ThemeData2Base {
+abstract class _$_ThemeData2Base implements ThemeBase<_$_ThemeData2> {
   /* ALL ${e.type} get ${e.name}; */
   Color? get backgroundColor;
   Color? get addressBarColor;
@@ -115,7 +64,7 @@ abstract class _$_ThemeData2Base {
   TextStyle? get style;
 
   const _$_ThemeData2Base();
-  _$_ThemeData2 combine(_$_ThemeData2Base? other) {
+  _$_ThemeData2 combine(_$_ThemeData2? other) {
     if (other == null) return this as _$_ThemeData2;
     return _$_ThemeData2(
       /* POSITIONAL other.${e.name} ?? ${e.name}, */
@@ -162,60 +111,4 @@ class _$_ThemeData2 extends _ThemeData2 {
   }) : super._();
 
   Map<String, dynamic> toJson() => _$$_ThemeData2ToJson(this);
-}
-
-class Theme2 extends BlocProvider<ThemeDataCubit<_ThemeData2>> {
-  Theme2.fromJson([Map<String, dynamic>? json, Key? key])
-      : super(
-          key: key,
-          create: ThemeDataCubit.getCreationFn(
-            json == null ? null : _ThemeData2.fromJson(json),
-            (colorScheme) => _ThemeData2.from(colorScheme),
-          ),
-        );
-
-  // add ability to style components in place
-  Theme2({
-    /*ALL ${e.type?} ${e.name},*/
-    Color? backgroundColor,
-    Color? addressBarColor,
-    Color? addressBarBackgroundColor,
-    TextDecoration? decor,
-    TextStyle? style,
-    required Widget child,
-    Key? key,
-  }) : super(
-          key: key,
-          create: ThemeDataCubit.getCreationFn(
-            _ThemeData2(
-              /*POSITIONAL ${e.name}*/
-              backgroundColor,
-              addressBarColor,
-              /*NAMED ${e.name}: ${e.name},*/
-              addressBarBackgroundColor: addressBarBackgroundColor,
-              decor: decor,
-              style: style,
-            ),
-            (colorScheme) => _ThemeData2.from(colorScheme),
-          ),
-          child: child,
-        );
-
-  // think how to rewrite this
-  static void updateWithJson(BuildContext context, Map<String, dynamic> json) {
-    final p = context.read<ThemeDataCubit<_ThemeData2>>();
-    p.set(p.state.combine(_ThemeData2.fromJson(json)));
-  }
-
-  static _ThemeData2 of(BuildContext context) => watch(context);
-
-  static R select<R>(
-          BuildContext context, R Function(_ThemeData2 v) selector) =>
-      context
-          .select((ThemeDataCubit<_ThemeData2> value) => selector(value.state));
-  static _ThemeData2 watch(BuildContext context) =>
-      context.watch<ThemeDataCubit<_ThemeData2>>().state;
-
-  static _ThemeData2 read(BuildContext context) =>
-      context.read<ThemeDataCubit<_ThemeData2>>().state;
 }

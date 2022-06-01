@@ -1,13 +1,13 @@
 name: theme_generator
 description: Package that help to generate theme that behaves like material themes, but with serialization and deserialization.
-version: 0.1.1
+version: 0.2.0
 homepage: https://github.com/massa-org/theme_generator
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
   
 dependencies:
-  theme_annotation: ^0.1.1
+  theme_annotation: ^0.2.0
 
   theme_json_converter: ^0.0.1
     
