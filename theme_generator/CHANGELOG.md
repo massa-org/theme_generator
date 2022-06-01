@@ -1,3 +1,8 @@
+## [0.2.1] - 2022-06-01
+
+fix:
+- remove provider name from annotation
+
 ## [0.2.0] - 2022-06-01
 
 - remove provider and bloc usage

@@ -26,7 +26,7 @@ abstract class _ThemeData extends _$_ThemeDataBase {
       _$$_ThemeDataFromJson(json);
 }
 
-@ThemeDataAnnotation('Theme2')
+@themeDataAnnotation
 abstract class _ThemeData2 extends _$_ThemeData2Base {
   const _ThemeData2._();
 
