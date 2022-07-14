@@ -1,3 +1,8 @@
+## [0.3.0] - 2022-07-14
+
+feat(flutter 3.0):
+- flutter 3.0 compatible
+
 ## [0.2.1] - 2022-06-01
 
 fix:

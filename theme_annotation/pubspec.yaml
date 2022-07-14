@@ -1,17 +1,17 @@
 name: theme_annotation
 description: Defines the annotations used by theme_generator to create code for theme serialization, deserialization and provider for it.
-version: 0.2.1
-homepage: https://github.com/massa-org/theme_generator
+version: 0.3.0
+repository: https://github.com/massa-org/theme_generator
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   json_annotation: ^4.0.0
 
-  theme_json_converter: ^0.0.1
+  theme_json_converter: ^0.1.0
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
